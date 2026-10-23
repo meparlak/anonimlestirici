@@ -9,19 +9,15 @@
 <body><main>
 <header><img src="icon.png" alt=""><a href="./">Anonimleştirici</a>
 <nav><a href="gizlilik.html">Gizlilik</a><a href="destek.html">Destek</a></nav></header>
-<h1>Dosyalarınızı yapay zekâya vermeden önce kişisel verileri temizleyin</h1>
-<p>Anonimleştirici, Excel, Word, PowerPoint, CSV ve metin dosyalarındaki ad soyad, TC kimlik no, telefon, e-posta, adres, birim ve kurum adlarını <code>[KİŞİ_1]</code>, <code>[TELEFON_1]</code> gibi kodlarla değiştirir. Hangi kodun kime ait olduğunu gösteren eşleştirme tablosu sizde kalır; yapay zekânın cevabı geldiğinde kodlar tek tıkla gerçek isimlere geri çevrilir.</p>
-<img class="shot" src="ekran-onizleme.png" alt="Bulguların listelendiği önizleme ekranı">
-<div class="card"><strong>Tamamen yerel.</strong> Uygulama internete bağlanmaz. Dosyalarınız Mac'inizden hiçbir yere gönderilmez; hesap, abonelik ya da bulut yoktur.</div>
-<h2>Öne çıkanlar</h2>
-<ul>
-<li>Aynı biçimde çıktı: tablolar, stiller, formüller, grafikler korunur; yalnızca metin değişir.</li>
-<li>Türkçeye özel: TC kimlik doğrulaması, Türkçe ad sözlüğü, unvanlar ve uygulamanın içindeki Türkçe dil modeli.</li>
-<li>KVKK'daki özel nitelikli veriler (sağlık, din, etnik köken, siyasi görüş) de bulunur.</li>
-<li>Kaydetmeden önce bütün bulguları görür, onaylar ya da düzeltirsiniz.</li>
-<li>Aynı kişi her yerde aynı kodu alır; birden fazla dosyada da.</li>
-</ul>
+<h1>Yapay zekâya dosya vermeden önce içindeki kişileri gizleyin</h1>
+<p>Şikâyet kayıtlarını, müşteri notlarını, anket cevaplarını yapay zekâya analiz ettirmek artık çok kolay. Zor olan, o dosyalardaki isimleri, TC kimlik numaralarını, telefonları ve adresleri dışarı çıkarmamak. Ben de bu yüzden bu küçük Mac uygulamasını hazırladım.</p>
+<p>Dosyanızı veriyorsunuz, uygulama içindeki kişisel verileri <code>[KİŞİ_1]</code>, <code>[TELEFON_1]</code> gibi kodlarla değiştiriyor. Excel, Word ya da PowerPoint dosyanız aynı düzende kalıyor; tablolar, formüller, grafikler yerinde duruyor. Yapay zekâya bu kodlu dosyayı veriyorsunuz. Cevap geldiğinde de kodları tek tıkla gerçek isimlere geri çeviriyorsunuz.</p>
+<img class="shot" src="ekran-onizleme.png" alt="Uygulamanın bulduğu kişisel verilerin listelendiği önizleme ekranı">
+<div class="card">Dosyalarınız Mac'inizden hiç çıkmıyor. Uygulama internete bağlanmıyor; hesap, abonelik ya da bulut yok.</div>
+<h2>Neyi, nasıl buluyor?</h2>
+<p>Türkçe belgeler için hazırlandı. TC kimlik numarasını doğrulama algoritmasıyla kontrol ediyor; Türkçe isimleri, "Sayın", "Bey", "Hanım" gibi unvanları, "Müdürlüğü", "A.Ş." gibi kurum adlarını tanıyor. Sözlükte olmayan isimler ve sağlık, din, siyasi görüş gibi hassas bilgiler için Yıldız Teknik Üniversitesi COSMOS ekibinin açık lisanslı Türkçe modelini kullanıyor. Bu model de bilgisayarınızda çalışıyor.</p>
+<p>Hiçbir otomatik araç her şeyi yakalayamaz. Bu yüzden uygulama kaydetmeden önce bulduğu her şeyi size gösteriyor; yanlış olanın işaretini kaldırıyor, kaçanı elle ekliyorsunuz. Aynı kişi dosyanın her yerinde, hatta farklı dosyalarda bile aynı kodu alıyor. Böylece yapay zekâ kimin ne yaptığını takip edebiliyor.</p>
 <p><a class="download" href="https://github.com/meparlak/anonimlestirici/releases/latest/download/Anonimlestirici.dmg">Mac için indir</a></p>
-<p class="muted">macOS 13 ve sonrası, Apple Silicon (M1 ve sonrası) Mac'ler. Kurulum adımları için <a href="https://github.com/meparlak/anonimlestirici/blob/main/docs/KURULUM.md">kurulum rehberine</a> bakın.</p>
+<p class="muted">Apple işlemcili (M1 ve sonrası) Mac ve macOS 13 ya da daha yenisi gerekiyor. Uygulama henüz Apple'ın ücretli sertifikasıyla imzalanmadığı için ilk açılışta bir kez izin vermeniz gerekiyor; adımlar <a href="https://github.com/meparlak/anonimlestirici/blob/main/docs/KURULUM.md">kurulum rehberinde</a>. Kişisel kullanım, akademik çalışmalar ve kamu kurumları için ücretsiz. Şirket içi kullanım için <a href="mailto:enesparlakq@gmail.com">bana yazabilirsiniz</a>.</p>
 <footer>© 2026 Mehmet Enes Parlak · <a href="gizlilik.html">Gizlilik politikası</a> · <a href="destek.html">Destek</a></footer>
 </main></body></html>
