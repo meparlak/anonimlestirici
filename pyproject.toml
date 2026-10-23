@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anonimlestirici"
+version = "0.1.0"
+description = "Excel, Word, PowerPoint ve metin dosyalarındaki kişisel verileri bilgisayardan çıkarmadan anonimleştirir."
+readme = "README.md"
+license = "LicenseRef-PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Mehmet Enes Parlak" }]
+dependencies = [
+    "openpyxl>=3.1",
+    "lxml>=5.0",
+]
+
+[project.optional-dependencies]
+ner = ["onnxruntime>=1.18", "tokenizers>=0.19", "numpy>=1.26"]
+dev = ["pytest>=8", "pyinstaller>=6.10"]
+
+[project.scripts]
+anonimlestirici = "anonimlestirici.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["anonimlestirici*"]
+
+[tool.setuptools.package-data]
+"anonimlestirici.data" = ["*.txt"]
+"anonimlestirici" = ["models/ner/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

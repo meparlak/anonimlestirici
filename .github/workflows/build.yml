@@ -1,0 +1,59 @@
+name: Test ve derleme
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev,ner]"
+      - run: pytest -q   # NER testleri model olmadığı için atlanır
+
+  macos:
+    needs: test
+    runs-on: macos-15  # Apple Silicon, Xcode yüklü
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # derleme numarası için commit sayısı
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev,ner]"
+      - name: Dil modeli (önbellekten)
+        uses: actions/cache@v4
+        with:
+          path: anonimlestirici/models/ner
+          key: ner-modernbert-tr-pii-69b2563-full
+      - run: ./packaging/fetch_model.sh
+        if: hashFiles('anonimlestirici/models/ner/model.onnx') == ''
+      - run: pytest -q tests/test_ner.py
+      - name: Uygulama ve DMG (ad-hoc imza)
+        run: ./packaging/build_mac.sh
+        env:
+          PYTHON: python
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Anonimlestirici-dmg
+          path: dist/*.dmg
+      - name: Sandbox içinde öz-test
+        timeout-minutes: 5
+        run: |
+          dist/Anonimlestirici.app/Contents/MacOS/Anonimlestirici --selftest | tee selftest.log
+          grep -q "SONUÇ: BAŞARILI" selftest.log
+      - name: Sürüme ekle
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.dmg
