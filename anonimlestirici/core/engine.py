@@ -228,11 +228,19 @@ class Session:
         all_segments: list[tuple[Document, Segment]] = [(d, s) for d in docs for s in d.segments]
         total = len(all_segments)
         # Toplu çalışan dedektörler (NER modeli) bütün parçaları bir kerede işler
+        failed: set[str] = set()
         for d in detectors:
             prepare = getattr(d, "prepare", None)
             if prepare:
-                prepare([s for _, s in all_segments], progress, cancel)
+                try:
+                    prepare([s for _, s in all_segments], progress, cancel)
+                except Cancelled:
+                    raise
+                except Exception as e:  # noqa: BLE001 - bir yöntemin hatası bütün taramayı durdurmasın
+                    _log_error(d.name, e)
+                    failed.add(d.name)
         cands: dict[tuple[EntityType, str], Candidate] = {}
+        skipped_by: dict[str, int] = {}
 
         for idx, (doc, seg) in enumerate(all_segments):
             if cancel and cancel():
@@ -243,7 +251,15 @@ class Session:
                 continue
             found: list[Finding] = []
             for d in detectors:
-                found.extend(d.detect(seg))
+                if d.name in failed:
+                    continue
+                try:
+                    found.extend(d.detect(seg))
+                except Exception as e:  # noqa: BLE001
+                    _log_error(d.name, e)
+                    if d.name not in skipped_by:
+                        skipped_by[d.name] = 0
+                    skipped_by[d.name] += 1
             if ex_rx and found:
                 blocked = [(m.start(), m.end()) for m in ex_rx.finditer(seg.text)]
                 found = [f for f in found if not any(a <= f.start and f.end <= b for a, b in blocked)]
@@ -274,6 +290,10 @@ class Session:
         candidates = list(cands.values())
         for c in candidates:
             c.accepted = c.confidence >= 0.5
+        for name in failed:
+            warnings.append(f"\"{name}\" yöntemi çalıştırılamadı; tarama diğer yöntemlerle yapıldı.")
+        for name, n in skipped_by.items():
+            warnings.append(f"\"{name}\" yöntemi {n} metin parçasında hata verdi; o parçalar diğer yöntemlerle tarandı.")
         result = AnalysisResult(docs, candidates, warnings)
         self.recount(result)
         return result
@@ -390,6 +410,13 @@ class Session:
             skipped=len(skipped),
             warnings=warnings,
         )
+
+
+def _log_error(name: str, e: Exception) -> None:
+    """Hata ayrıntısını yalnızca standart hataya yaz (metin içeriği yazılmaz)."""
+    import sys
+
+    print(f"[{name}] {type(e).__name__}: {e}", file=sys.stderr)
 
 
 def unique_path(p: Path) -> Path:

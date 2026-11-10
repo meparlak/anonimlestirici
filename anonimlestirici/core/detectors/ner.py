@@ -232,32 +232,38 @@ class NerDetector(Detector):
             else:
                 spans.append([ent, w, w, [p]])
         out: list[Finding] = []
+        punct = " ,;:\"()[]"
+
+        def word(i: int) -> str:
+            return text[words[i][0] : words[i][1]].strip(punct)
+
         for ent, w0, w1, ps in spans:
-            a, b = words[w0][0], words[w1][1]
-            frag = text[a:b]
-            # kelimeye yapışık noktalama ve Türkçe ekler: "Demir," → "Demir", "Kaya'ya" → "Kaya"
-            frag = re.sub(r"['’][^\s'’]*$", "", frag) if LABEL_MAP[ent] in (EntityType.KISI, EntityType.KURUM) else frag
-            stripped = frag.strip(" ,;:\"()[]")
-            if stripped.endswith(".") and not re.search(r"\b[A-ZÇĞİÖŞÜ]\.$|A\.Ş\.$|Şti\.$|Ltd\.$", stripped):
-                stripped = stripped[:-1]
             et = LABEL_MAP[ent]
             if et == EntityType.KISI:
                 # unvanlar kodun dışında kalır: "Serkan Usta" → "Serkan", "Dr. Elif Demir" → "Elif Demir"
-                parts = stripped.split()
-                while parts and fold(parts[-1]) in TITLES_AFTER:
-                    parts.pop()
-                while parts and fold(parts[0]) in TITLES_BEFORE:
-                    parts.pop(0)
-                stripped = " ".join(parts)
-            if len(stripped) < 2:
+                while w1 >= w0 and fold(word(w1)) in TITLES_AFTER:
+                    w1 -= 1
+                while w0 <= w1 and (fold(word(w0)) in TITLES_BEFORE or fold(word(w0).rstrip(".")) in TITLES_BEFORE):
+                    w0 += 1
+            if w0 > w1 or not self.settings.is_enabled(et):
                 continue
-            a = text.index(stripped, a)
-            if not self.settings.is_enabled(et):
+            # Konumlar doğrudan kelimelerden alınır; metin yeniden aranmaz (satır sonu, çift boşluk güvenli)
+            a, b = words[w0][0], words[w1][1]
+            frag = text[a:b]
+            if et in (EntityType.KISI, EntityType.KURUM):
+                # kelimeye yapışık Türkçe ek: "Kaya'ya" → "Kaya"
+                frag = re.sub(r"['’][^\s'’]*$", "", frag)
+            lead = len(frag) - len(frag.lstrip(punct))
+            frag = frag.strip(punct)
+            if frag.endswith(".") and not re.search(r"\b[A-ZÇĞİÖŞÜ]\.$|A\.Ş\.$|Şti\.$|Ltd\.$", frag):
+                frag = frag[:-1]
+            if len(frag) < 2:
                 continue
+            a += lead
             p = sum(ps) / len(ps)
             # Model kendinden çok emin değilse önizlemede işaretsiz gelir
             conf = 0.7 if p >= 0.8 else 0.45
-            out.append(Finding(a, a + len(stripped), stripped, et, conf, self.name))
+            out.append(Finding(a, a + len(frag), frag, et, conf, self.name))
         return out
 
     def detect(self, segment: Segment) -> list[Finding]:
