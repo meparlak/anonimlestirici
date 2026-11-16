@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
@@ -103,8 +104,12 @@ def app_support_dir() -> Path:
     base = os.environ.get("ANONIMLESTIRICI_HOME")
     if base:
         p = Path(base)
-    else:
+    elif sys.platform == "win32":
+        p = Path(os.environ.get("APPDATA") or Path.home() / "AppData" / "Roaming") / APP_DIR_NAME
+    elif sys.platform == "darwin":
         p = Path.home() / "Library" / "Application Support" / APP_DIR_NAME
+    else:
+        p = Path(os.environ.get("XDG_CONFIG_HOME") or Path.home() / ".config") / APP_DIR_NAME
     p.mkdir(parents=True, exist_ok=True)
     return p
 

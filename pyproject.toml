@@ -18,6 +18,7 @@ dependencies = [
 
 [project.optional-dependencies]
 ner = ["onnxruntime>=1.18", "tokenizers>=0.19", "numpy>=1.26"]
+windows = ["pywebview>=5.3"]
 dev = ["pytest>=8", "pyinstaller>=6.10"]
 
 [project.scripts]
@@ -29,6 +30,7 @@ include = ["anonimlestirici*"]
 [tool.setuptools.package-data]
 "anonimlestirici.data" = ["*.txt"]
 "anonimlestirici" = ["models/ner/*"]
+"anonimlestirici.desktop" = ["ui/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

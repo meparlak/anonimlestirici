@@ -24,4 +24,4 @@ Model: https://huggingface.co/$REPO (sürüm $REV, $VARIANT)
 Lisans: Apache-2.0
 Geliştiren: YTU COSMOS (Yıldız Teknik Üniversitesi)
 TXT
-shasum -a 256 "$DEST/model.onnx"
+(command -v shasum >/dev/null && shasum -a 256 "$DEST/model.onnx") || sha256sum "$DEST/model.onnx"
