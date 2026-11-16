@@ -2,7 +2,7 @@
 
 Türkçe | [English](README.en.md)
 
-Excel, Word ve PowerPoint dosyalarımı yapay zekâya verip yorumlatmak ya da kök neden analizi yaptırmak istiyordum. Ama bu dosyalarda ad soyad, TC kimlik numarası, telefon, adres, birim ve kurum adları geçiyordu. Bunları elle temizlemek uzun sürüyor ve bir şeyin gözden kaçması çok kolay. Bu macOS uygulaması bu işi benim yerime yapıyor.
+Excel, Word ve PowerPoint dosyalarımı yapay zekâya verip yorumlatmak ya da kök neden analizi yaptırmak istiyordum. Ama bu dosyalarda ad soyad, TC kimlik numarası, telefon, adres, birim ve kurum adları geçiyordu. Bunları elle temizlemek uzun sürüyor ve bir şeyin gözden kaçması çok kolay. Bu uygulama bu işi benim yerime yapıyor. Mac ve Windows'ta çalışıyor.
 
 ![Önizleme ekranı](docs/gorseller/2-onizleme.png)
 
@@ -10,27 +10,39 @@ Excel, Word ve PowerPoint dosyalarımı yapay zekâya verip yorumlatmak ya da k�
 
 Kod ya da terminal bilgisi gerekmez.
 
-1. [**Anonimleştirici'yi indirin**](https://github.com/meparlak/anonimlestirici/releases/latest/download/Anonimlestirici.dmg) (yaklaşık 580 MB).
+**Mac** (Apple işlemcili, M1 ve sonrası; macOS 13 ya da daha yenisi)
+
+1. [**Mac için indirin**](https://github.com/meparlak/anonimlestirici/releases/latest/download/Anonimlestirici.dmg) (yaklaşık 580 MB).
 2. İndirilen `Anonimlestirici.dmg` dosyasını açın ve uygulamayı Applications (Uygulamalar) klasörüne sürükleyin.
 3. İlk açılışta macOS bir güvenlik uyarısı verir. Sistem Ayarları → Gizlilik ve Güvenlik → **Yine de Aç** ile bir kez izin verin.
 
-Bu uyarının nedeni uygulamanın henüz Apple'ın ücretli geliştirici sertifikasıyla **imzalanmamış** olması. Uygulamada bir sorun olduğu anlamına gelmiyor; Apple uygulamayı incelemediği için genel bir uyarı gösteriyor. Kaynak kodun tamamı bu sayfada herkese açık.
+**Windows** (Windows 10 ya da 11, 64 bit)
+
+1. [**Windows için indirin**](https://github.com/meparlak/anonimlestirici/releases/latest/download/Anonimlestirici-Kurulum.exe) (yaklaşık 600 MB).
+2. `Anonimlestirici-Kurulum.exe` dosyasını çalıştırın. "Windows bilgisayarınızı korudu" uyarısında **Ek bilgi** → **Yine de çalıştır** deyin.
+3. Kurulum sihirbazını izleyin. Yönetici parolası gerekmez.
+
+Bu uyarıların nedeni uygulamanın henüz Apple'ın ve Microsoft'un ücretli geliştirici sertifikalarıyla **imzalanmamış** olması. Uygulamada bir sorun olduğu anlamına gelmiyor; uygulamayı incelemedikleri için genel bir uyarı gösteriyorlar. Kaynak kodun tamamı bu sayfada herkese açık.
 
 Ekran ekran anlatım için [kurulum rehberine](docs/KURULUM.md), uygulamanın nasıl kullanılacağı için [kullanım kılavuzuna](docs/KULLANIM.md) bakın.
 
-Gerekenler: Apple işlemcili (M1 ve sonrası) bir Mac ve macOS 13 ya da daha yenisi.
+<details><summary>Windows sürümünden ekran görüntüsü</summary>
 
-## Gizlilik: verileriniz Mac'inizden çıkmaz
+![Windows'ta önizleme ekranı](docs/gorseller/windows-review.png)
+
+</details>
+
+## Gizlilik: verileriniz bilgisayarınızdan çıkmaz
 
 Bu uygulamayı yazma nedenim kişisel verilerin dışarı çıkmaması, bu yüzden en önemli kural bu:
 
-- Dosyalarınız yalnızca kendi Mac'inizde işlenir. Uygulama hiçbir sunucuya bağlanmaz, hiçbir veri göndermez.
+- Dosyalarınız yalnızca kendi bilgisayarınızda işlenir. Uygulama hiçbir sunucuya bağlanmaz, hiçbir veri göndermez.
 - Hesap, abonelik ya da bulut yok. Uygulamada analitik, reklam, kullanım istatistiği ya da çökme raporu gönderen bir parça yok.
 - Türkçe dil modeli uygulamanın içinde gelir ve bilgisayarınızda çalışır. Çalışırken hiçbir şey indirilmez.
-- Uygulama macOS'un korumalı alanında (sandbox) çalışır. Yalnızca sizin seçtiğiniz ya da pencereye sürüklediğiniz dosyalara erişebilir. İşlem sırasında oluşan geçici kopyalar bu korumalı alanda durur ve işlem bitince ya da uygulama kapanınca silinir.
-- Ayarlarınız ve "Son işlemler" listesindeki dosya adları yalnızca Mac'inizde saklanır.
+- Mac'te uygulama macOS'un korumalı alanında (sandbox) çalışır ve yalnızca sizin seçtiğiniz ya da pencereye sürüklediğiniz dosyalara erişebilir. İşlem sırasında oluşan geçici kopyalar bu korumalı alanda durur ve işlem bitince ya da uygulama kapanınca silinir.
+- Ayarlarınız ve "Son işlemler" listesindeki dosya adları yalnızca bilgisayarınızda saklanır.
 
-Tek istisna, Ayarlar'daki deneysel "Yerel LLM" özelliği. Varsayılan olarak kapalıdır. Açarsanız metinler yalnızca sizin belirttiğiniz model sunucusuna gider; bu da varsayılan olarak aynı bilgisayarda çalışan Ollama'dır. Bilgisayarın dışında bir adres girerseniz uygulama ayrıca onay ister. Bu özellik için GitHub'dan indirilen sürüm ağ bağlantısı iznine sahiptir. App Store sürümünde bu özellik ve ağ izni hiç bulunmaz.
+Tek istisna, Ayarlar'daki deneysel "Yerel LLM" özelliği. Varsayılan olarak kapalıdır. Açarsanız metinler yalnızca sizin belirttiğiniz model sunucusuna gider; bu da varsayılan olarak aynı bilgisayarda çalışan Ollama'dır. Bilgisayarın dışında bir adres girerseniz uygulama ayrıca onay ister. Bu özellik yalnızca GitHub'dan indirilen Mac sürümünde var; o sürüm bu yüzden ağ bağlantısı iznine sahiptir. Windows sürümünde ve App Store sürümünde bu özellik hiç bulunmaz.
 
 **Nasıl doğrularım?**
 

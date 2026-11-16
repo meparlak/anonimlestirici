@@ -2,7 +2,11 @@
 
 Bu rehber, bilgisayar konusunda teknik bilgisi olmayanlar için yazıldı. Kurulum yaklaşık 5 dakika sürer. Terminal ya da kod gerekmez.
 
-> **Bilmeniz gereken:** Anonimleştirici henüz Apple'ın ücretli geliştirici sertifikasıyla **imzalanmamış** bir uygulama. Bu yüzden ilk açılışta macOS "Apple bu uygulamayı denetleyemiyor" diye bir uyarı verir ve sizden bir kez ek izin ister (3. adım). Bu uyarı uygulamada bir sorun bulunduğu anlamına gelmez; Apple'ın uygulamayı incelemediğini söyler. Uygulama internete bağlanmaz, dosyalarınızı hiçbir yere göndermez ve kaynak kodunun tamamı herkesin inceleyebileceği şekilde açıktır. İleride uygulama imzalandığında bu adıma gerek kalmayacak.
+Bilgisayarınıza göre ilgili bölüme geçin: [Mac'e kurulum](#mace-kurulum) · [Windows'a kurulum](#windowsa-kurulum)
+
+> **Bilmeniz gereken:** Anonimleştirici henüz Apple'ın ve Microsoft'un ücretli geliştirici sertifikalarıyla **imzalanmamış** bir uygulama. Bu yüzden ilk açılışta macOS "Apple bu uygulamayı denetleyemiyor", Windows ise "Windows bilgisayarınızı korudu" diye bir uyarı verir ve sizden bir kez ek izin ister. Bu uyarı uygulamada bir sorun bulunduğu anlamına gelmez; Apple'ın uygulamayı incelemediğini söyler. Uygulama internete bağlanmaz, dosyalarınızı hiçbir yere göndermez ve kaynak kodunun tamamı herkesin inceleyebileceği şekilde açıktır. İleride uygulama imzalandığında bu adıma gerek kalmayacak.
+
+# Mac'e kurulum
 
 ## Başlamadan önce: Mac'iniz uygun mu?
 
@@ -53,7 +57,7 @@ Uygulama açılır. Bundan sonra her seferinde normal şekilde çift tıklayarak
 
 ### Bu uyarı neden çıkıyor?
 
-macOS, internetten indirilen her uygulamanın Apple'ın verdiği bir geliştirici sertifikasıyla imzalanmasını ve Apple'ın taramasından geçmesini bekler. Bunun için yıllık ücretli bir üyelik gerekiyor ve bu proje henüz o aşamada değil. Uyarı, uygulamada bir sorun bulunduğu anlamına gelmez; Apple'ın uygulamayı görmediğini söyler. Uygulamanın kaynak kodunun tamamı bu sayfada herkese açık olarak duruyor. Uygulama internete bağlanmaz ve dosyalarınızı hiçbir yere göndermez; ayrıntılar [README'deki Gizlilik bölümünde](../README.md#gizlilik-verileriniz-macinizden-çıkmaz).
+macOS, internetten indirilen her uygulamanın Apple'ın verdiği bir geliştirici sertifikasıyla imzalanmasını ve Apple'ın taramasından geçmesini bekler. Bunun için yıllık ücretli bir üyelik gerekiyor ve bu proje henüz o aşamada değil. Uyarı, uygulamada bir sorun bulunduğu anlamına gelmez; Apple'ın uygulamayı görmediğini söyler. Uygulamanın kaynak kodunun tamamı bu sayfada herkese açık olarak duruyor. Uygulama internete bağlanmaz ve dosyalarınızı hiçbir yere göndermez; ayrıntılar [README'deki Gizlilik bölümünde](../README.md#gizlilik-verileriniz-bilgisayarınızdan-çıkmaz).
 
 ## Güncelleme
 
@@ -62,6 +66,40 @@ Yeni bir sürüm çıktığında 1. ve 2. adımları tekrarlayın. Kopyalarken "
 ## Kaldırma
 
 Uygulamalar klasöründeki Anonimleştirici'yi çöpe sürükleyin. Ayarlarınızı da silmek isterseniz Finder'da **Git → Klasöre Git…** menüsünü açın, `~/Library/Containers` yazın ve içindeki `io.github.meparlak.anonimlestirici` klasörünü çöpe atın.
+
+# Windows'a kurulum
+
+## Başlamadan önce: bilgisayarınız uygun mu?
+
+Windows 10 ya da Windows 11 (64 bit) gerekir. Uygulama yaklaşık 700 MB yer kaplar; kurulum dosyası 600 MB civarındadır. Yönetici parolası gerekmez, uygulama yalnızca sizin kullanıcı hesabınıza kurulur.
+
+## 1. İndirin
+
+[**Windows kurulum dosyasını indirmek için buraya tıklayın**](https://github.com/meparlak/anonimlestirici/releases/latest/download/Anonimlestirici-Kurulum.exe)
+
+Tarayıcınız "Bu dosya yaygın olarak indirilmiyor" gibi bir uyarı gösterebilir. Edge'de indirme listesindeki dosyanın yanındaki **⋯** menüsünden **Sakla**'yı, ardından **Yine de sakla**'yı seçin. Chrome'da **Sakla** deyin.
+
+## 2. Kurun
+
+1. İndirilenler klasöründeki `Anonimlestirici-Kurulum.exe` dosyasına çift tıklayın.
+2. Mavi bir "Windows bilgisayarınızı korudu" penceresi çıkar. Penceredeki **Ek bilgi** yazısına tıklayın, ardından **Yine de çalıştır** düğmesine basın. Bu uyarı, kurulum dosyası Microsoft'un ücretli sertifikasıyla imzalanmadığı için çıkar; dosyada bir sorun olduğu anlamına gelmez.
+3. Kurulum sihirbazı Türkçe açılır. Lisansı kabul edin, isterseniz masaüstü kısayolunu işaretleyin ve **Kur**'a basın.
+4. Kurulum bitince **Son**'a basın. Uygulama açılır.
+
+Bundan sonra Başlat menüsünde "Anonimleştirici" yazarak açabilirsiniz.
+
+## Güncelleme
+
+Yeni bir sürüm çıktığında kurulum dosyasını yeniden indirip çalıştırın; eski sürümün üzerine kurulur. Ayarlarınız ve listeleriniz korunur.
+
+## Kaldırma
+
+**Ayarlar → Uygulamalar → Yüklü uygulamalar** bölümünde Anonimleştirici'yi bulun ve **Kaldır**'a basın. Ayarlarınızı da silmek isterseniz Dosya Gezgini'nin adres çubuğuna `%APPDATA%\Anonimlestirici` yazıp bu klasörü silin.
+
+## Windows'ta karşılaşılabilecek sorunlar
+
+- **Uygulama açılıyor ama pencere boş kalıyor:** Arayüz için Microsoft Edge WebView2 gerekir. Windows 11'de ve güncel Windows 10'da hazır gelir. Eksikse kurulum sihirbazı uyarır; Microsoft'un sayfasından "Evergreen Bootstrapper"ı indirip kurmanız yeterli.
+- **Kurumsal bilgisayarda kurulum engellendi:** Şirket bilgisayarlarında BT politikaları imzasız uygulamaları engelleyebilir. Bu durumda BT biriminizle görüşün.
 
 ## Sorun mu yaşıyorsunuz?
 

@@ -3,21 +3,25 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anonimleştirici</title>
-<meta name="description" content="Excel, Word ve PowerPoint dosyalarındaki kişisel verileri Mac'inizden çıkarmadan anonimleştiren uygulama.">
+<meta name="description" content="Excel, Word ve PowerPoint dosyalarındaki kişisel verileri bilgisayarınızdan çıkarmadan anonimleştiren Mac ve Windows uygulaması.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body><main>
 <header><img src="icon.png" alt=""><a href="./">Anonimleştirici</a>
 <nav><a href="gizlilik.html">Gizlilik</a><a href="destek.html">Destek</a></nav></header>
 <h1>Yapay zekâya dosya vermeden önce içindeki kişileri gizleyin</h1>
-<p>Şikâyet kayıtlarını, müşteri notlarını, anket cevaplarını yapay zekâya analiz ettirmek artık çok kolay. Zor olan, o dosyalardaki isimleri, TC kimlik numaralarını, telefonları ve adresleri dışarı çıkarmamak. Ben de bu yüzden bu küçük Mac uygulamasını hazırladım.</p>
+<p>Şikâyet kayıtlarını, müşteri notlarını, anket cevaplarını yapay zekâya analiz ettirmek artık çok kolay. Zor olan, o dosyalardaki isimleri, TC kimlik numaralarını, telefonları ve adresleri dışarı çıkarmamak. Ben de bu yüzden bu küçük uygulamayı hazırladım. Mac'te ve Windows'ta çalışıyor.</p>
 <p>Dosyanızı veriyorsunuz, uygulama içindeki kişisel verileri <code>[KİŞİ_1]</code>, <code>[TELEFON_1]</code> gibi kodlarla değiştiriyor. Excel, Word ya da PowerPoint dosyanız aynı düzende kalıyor; tablolar, formüller, grafikler yerinde duruyor. Yapay zekâya bu kodlu dosyayı veriyorsunuz. Cevap geldiğinde de kodları tek tıkla gerçek isimlere geri çeviriyorsunuz.</p>
 <img class="shot" src="ekran-onizleme.png" alt="Uygulamanın bulduğu kişisel verilerin listelendiği önizleme ekranı">
-<div class="card">Dosyalarınız Mac'inizden hiç çıkmıyor. Uygulama internete bağlanmıyor; hesap, abonelik ya da bulut yok.</div>
+<div class="card">Dosyalarınız bilgisayarınızdan hiç çıkmıyor. Uygulama internete bağlanmıyor; hesap, abonelik ya da bulut yok.</div>
 <h2>Neyi, nasıl buluyor?</h2>
 <p>Türkçe belgeler için hazırlandı. TC kimlik numarasını doğrulama algoritmasıyla kontrol ediyor; Türkçe isimleri, "Sayın", "Bey", "Hanım" gibi unvanları, "Müdürlüğü", "A.Ş." gibi kurum adlarını tanıyor. Sözlükte olmayan isimler ve sağlık, din, siyasi görüş gibi hassas bilgiler için Yıldız Teknik Üniversitesi COSMOS ekibinin açık lisanslı Türkçe modelini kullanıyor. Bu model de bilgisayarınızda çalışıyor.</p>
 <p>Hiçbir otomatik araç her şeyi yakalayamaz. Bu yüzden uygulama kaydetmeden önce bulduğu her şeyi size gösteriyor; yanlış olanın işaretini kaldırıyor, kaçanı elle ekliyorsunuz. Aynı kişi dosyanın her yerinde, hatta farklı dosyalarda bile aynı kodu alıyor. Böylece yapay zekâ kimin ne yaptığını takip edebiliyor.</p>
-<p><a class="download" href="https://github.com/meparlak/anonimlestirici/releases/latest/download/Anonimlestirici.dmg">Mac için indir</a></p>
-<p class="muted">Apple işlemcili (M1 ve sonrası) Mac ve macOS 13 ya da daha yenisi gerekiyor. Uygulama henüz Apple'ın ücretli sertifikasıyla imzalanmadığı için ilk açılışta bir kez izin vermeniz gerekiyor; adımlar <a href="https://github.com/meparlak/anonimlestirici/blob/main/docs/KURULUM.md">kurulum rehberinde</a>. Kişisel kullanım, akademik çalışmalar ve kamu kurumları için ücretsiz. Şirket içi kullanım için <a href="mailto:enesparlakq@gmail.com">bana yazabilirsiniz</a>.</p>
+<div class="downloads">
+<a class="download" href="https://github.com/meparlak/anonimlestirici/releases/latest/download/Anonimlestirici.dmg">Mac için indir</a>
+<a class="download" href="https://github.com/meparlak/anonimlestirici/releases/latest/download/Anonimlestirici-Kurulum.exe">Windows için indir</a>
+</div>
+<p class="muted"><strong>Mac:</strong> Apple işlemcili (M1 ve sonrası) Mac ve macOS 13 ya da daha yenisi. <strong>Windows:</strong> Windows 10 ya da 11, 64 bit; yönetici parolası gerekmez.</p>
+<p class="muted">Uygulama henüz Apple'ın ve Microsoft'un ücretli sertifikalarıyla imzalanmadığı için ilk açılışta bir kez izin vermeniz gerekiyor; adımlar <a href="https://github.com/meparlak/anonimlestirici/blob/main/docs/KURULUM.md">kurulum rehberinde</a>. Kişisel kullanım, akademik çalışmalar ve kamu kurumları için ücretsiz. Şirket içi kullanım için <a href="mailto:enesparlakq@gmail.com">bana yazabilirsiniz</a>.</p>
 <footer>© 2026 Mehmet Enes Parlak · <a href="gizlilik.html">Gizlilik politikası</a> · <a href="destek.html">Destek</a></footer>
 </main></body></html>

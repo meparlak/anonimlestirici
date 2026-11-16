@@ -5,7 +5,7 @@ Anonimleştirici'nin iki işi var:
 1. **Anonimleştir:** Dosyanızdaki kişisel verileri `[KİŞİ_1]`, `[TELEFON_1]` gibi kodlarla değiştirir. Bu anonim dosyayı yapay zekâya verebilirsiniz.
 2. **Geri Çevir:** Yapay zekânın cevabındaki kodları yeniden gerçek isimlere çevirir.
 
-Uygulamanın üst ortasındaki düğmelerle bu iki ekran arasında geçiş yaparsınız.
+Uygulamanın üst ortasındaki düğmelerle bu iki ekran arasında geçiş yaparsınız. Mac ve Windows sürümlerinin ekranları aynıdır; aşağıdaki görüntüler Mac sürümünden.
 
 ## Dosya anonimleştirme
 
@@ -60,7 +60,7 @@ Yapay zekânın cevabı bir dosyaysa (ör. bir Word raporu) **Dosyadan çevir…
 
 ## Ayarlar
 
-Sağ üstteki dişli simgesinden ya da **⌘ + ,** kısayoluyla açılır.
+Sağ üstteki dişli simgesinden ya da Mac'te **⌘ + ,**, Windows'ta **Ctrl + ,** kısayoluyla açılır.
 
 - **Veri türleri:** Hangi bilgilerin aranacağı. Dil modelini buradan kapatabilirsiniz. Çok büyük dosyalarda tarama hızlanır, ama sözlükte olmayan isimler kaçabilir.
 - **Listeler:** Her zaman anonimleştirilecek terimler (ör. müşteri ve proje adları) ve asla anonimleştirilmeyecek terimler (ör. kendi birim adlarınız).
@@ -70,7 +70,7 @@ Sağ üstteki dişli simgesinden ya da **⌘ + ,** kısayoluyla açılır.
 ## Sık sorulanlar
 
 **Dosyalarım bir yere gönderiliyor mu?**
-Hayır. Uygulama internete bağlanmaz. Her şey Mac'inizde olur.
+Hayır. Uygulama internete bağlanmaz. Her şey kendi bilgisayarınızda olur.
 
 **Büyük bir Excel dosyası neden uzun sürüyor?**
 Uygulamanın içindeki Türkçe dil modeli, her metin hücresini tek tek okur. Birkaç bin satırlık dosyalar birkaç dakika sürebilir. Bu sürede ilerleme çubuğu görünür; isterseniz **İptal**'e basabilirsiniz.
